@@ -1,0 +1,44 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="base">
+  <section id="header">
+    <h1 id="title"> {{ title }}</h1>
+  </section>
+
+
+  <section id="container">
+
+
+      <!-- input component-->
+      <div class="float_center">
+        <div class="child">
+          <input class="input" placeholder="Neues Todo eingeben" type="text" [maxlength]="40" autofocus="" [(ngModel)]="newTodo.description" (keyup.enter)="addTodo()">
+          <button type="submit" (click)="addTodo()">+</button>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+    <!-- list component-->
+    <section id="list" *ngIf="todos.length > 0">
+      <div class="float_center">
+          <ul class="child">
+            <li *ngFor="let todo of todos" [class.completed]="todo.completed" >
+            <p><input class="toggle" type="checkbox" (click)="toggleTodoCompleted(todo)" [checked]="todo.completed"><label [class.completed]="todo.completed">{{todo.description}}</label></p></li>
+          </ul>
+      </div>
+      <div class="clear"></div>
+    </section>
+
+    <!-- config component-->
+      <div class="float_center">
+        <div class="child">
+          <p class="stats" *ngIf="completed > 0">{{ completed }} von {{todos.length}} Todo's sind erledigt</p>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+
+    <div class="clear"></div>
+  </section>
+
+
+</div>
