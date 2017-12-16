@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { TodoStorageService } from './todo-storage.service';
-import {Todo} from "./todo";
+import {Todo} from "../model/todo";
 
 describe('TodoStorageService', () => {
   beforeEach(() => {

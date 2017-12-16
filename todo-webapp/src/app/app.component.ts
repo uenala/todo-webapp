@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Todo } from "./todo";
-import { TodoStorageService} from "./todo-storage.service";
+import { Todo } from "./model/todo";
+import { TodoStorageService} from "./services/todo-storage.service";
 
 
 @Component({
