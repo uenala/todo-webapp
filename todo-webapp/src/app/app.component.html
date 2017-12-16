@@ -30,6 +30,7 @@
       <div class="float_center">
         <div class="child">
           <p class="stats" *ngIf="completed > 0">{{ completed }} von {{todos.length}} Todo's sind erledigt</p>
+          <p class="stats" *ngIf="completed == todos.length">BRAVO! Alle Todo's geschafft!</p>
         </div>
       </div>
       <div class="clear"></div>
