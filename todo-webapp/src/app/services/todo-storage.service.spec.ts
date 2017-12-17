@@ -20,7 +20,7 @@ describe('TodoStorageService', () => {
       expect(service.getAllTodos()).toEqual([]);
     }));
 
-    it('should return an array with all todos', inject([TodoStorageService], (service: TodoStorageService) => {
+    it('should return an array holding all todos', inject([TodoStorageService], (service: TodoStorageService) => {
       let todo1 = new Todo({description: 'Hello 1', completed: false});
       let todo2 = new Todo({description: 'Hello 2', completed: true});
       service.addTodo(todo1);
@@ -34,7 +34,13 @@ describe('TodoStorageService', () => {
 
   describe('#addTodo(todo)', () => {
 
-    it('should automatically assign an incrementing id', inject([TodoStorageService], (service: TodoStorageService) => {
+    it('should not add a todo with an empty description', inject([TodoStorageService], (service: TodoStorageService) => {
+      let todo1 = new Todo({description: '', completed: false});
+      service.addTodo(todo1);
+      expect(service.getTodoById(1)).toBeUndefined();
+    }));
+
+    it('should assign an incrementing id', inject([TodoStorageService], (service: TodoStorageService) => {
       let todo1 = new Todo({description: 'Hello 1', completed: false});
       let todo2 = new Todo({description: 'Hello 2', completed: true});
       service.addTodo(todo1);
@@ -48,7 +54,7 @@ describe('TodoStorageService', () => {
 
   describe('#updateTodoById(id, values)', () => {
 
-    it('should return todo with the corresponding id and updated data', inject([TodoStorageService], (service: TodoStorageService) => {
+    it('should return todo with matching id and updated data', inject([TodoStorageService], (service: TodoStorageService) => {
       let todo = new Todo({description: 'Hello 1', completed: false});
       service.addTodo(todo);
       // update
@@ -58,7 +64,7 @@ describe('TodoStorageService', () => {
       expect(updatedTodo.description).toEqual('new todo');
     }));
 
-    it('should return null if todo is not found', inject([TodoStorageService], (service: TodoStorageService) => {
+    it('should return null if no todo can be found', inject([TodoStorageService], (service: TodoStorageService) => {
       let todo = new Todo({description: 'Hello 1', completed: false});
       service.addTodo(todo);
       // update
@@ -73,7 +79,7 @@ describe('TodoStorageService', () => {
 
   describe('#toggleTodoCompleted(todo)', () => {
 
-    it('should return the updated todo with inverse complete status', inject([TodoStorageService], (service: TodoStorageService) => {
+    it('should return the updated todo with inverse completed status', inject([TodoStorageService], (service: TodoStorageService) => {
       let todo = new Todo({description: 'Hello 1', completed: false});
       service.addTodo(todo);
       // first toggle

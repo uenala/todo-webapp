@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Todo} from "../model/todo";
+import {isNullOrUndefined} from "util";
 
+
+// this service simulates a persistence layer. offers methods for getting, creating and updating todos.
 @Injectable()
 export class TodoStorageService {
 
   // Fields //
-  lastId: number = 0;
+  lastId: number = 0; // used to simulate id sequence increase of a db
   todos: Todo[] = [];
   countOfCompleted: number;
 
@@ -17,14 +20,18 @@ export class TodoStorageService {
   // Methods //
 
   // create
-  addTodo(todo: Todo): TodoStorageService {
+  addTodo(todo: Todo): void {
+    if (isNullOrUndefined(todo.description) || todo.description.trim() === '') {
+      console.log('prevented add of empty Todo')
+      return;
+    }
     if (!todo.id) {
       todo.id = ++this.lastId;
     }
 
     this.todos.push(todo);
-    console.log('added Todo id: ' + this.lastId)
-    return this;
+    console.log('added Todo id= ' + todo.id + ' : ' + todo.description)
+    return;
   }
 
   // getById
