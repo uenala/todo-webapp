@@ -9,7 +9,7 @@
       <!-- input component-->
       <div class="float_center">
         <div class="child">
-          <input class="input" placeholder="Neues Todo eingeben" type="text" [maxlength]="40" autofocus="" [(ngModel)]="newTodo.description" (keyup.enter)="addTodo()">
+          <input class="input" placeholder="Neues Todo eingeben" type="text" [maxlength]="40" autofocus="" [(ngModel)]="newTodo.description" (keyup.enter)="addTodo()" required />
           <button type="submit" (click)="addTodo()" [disabled]="!newTodo.description">+</button>
         </div>
       </div>
