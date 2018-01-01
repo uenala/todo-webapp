@@ -1,4 +1,4 @@
-# Angular4 TODO Webapp:
+# Angular5 TODO Webapp:
 
 This is a simple todo-webapplication I built to get to know angular a bit better. The Scaffold of this Version was generated via  [Angular CLI](https://github.com/angular/angular-cli).
 There is no real persistence layer, to keep things simple. But the applcation can be easily extended via modifications in the provided storage-service.

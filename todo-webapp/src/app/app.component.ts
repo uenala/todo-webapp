@@ -25,7 +25,7 @@ export class AppComponent {
   // "Controller" for TodoStorageService //
   addTodo() {
     this.todoStorageService.addTodo(this.newTodo);
-    this.newTodo = new Todo();
+    this.newTodo = new Todo(); // re-initialize after adding
   }
 
   toggleTodoCompleted(todo) {
