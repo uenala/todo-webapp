@@ -14,6 +14,7 @@ export class AppComponent {
   // Fields //
   title = '//TODO: get it done';
   newTodo: Todo = new Todo();
+  hideCompleted : boolean = false;
   private todoStorageService: TodoStorageService;
 
   // Constructor //
@@ -23,21 +24,33 @@ export class AppComponent {
 
   // Methods //
   // "Controller" for TodoStorageService //
-  addTodo() {
+  addTodo(): void {
     this.todoStorageService.addTodo(this.newTodo);
     this.newTodo = new Todo(); // re-initialize after adding
   }
 
-  toggleTodoCompleted(todo) {
+  toggleTodoCompleted(todo: Todo): void {
     this.todoStorageService.toggleTodoCompleted(todo);
   }
 
-  get todos() {
-    return this.todoStorageService.getAllTodos();
+  get todos(): Todo[]{
+    if(this.hideCompleted) {
+      return this.todoStorageService.getUncompletedTodos()
+    } else {
+      return this.todoStorageService.getAllTodos();
+    }
   }
 
-  get completed() {
+  get numberOfTodos(): number {
+    return this.todoStorageService.getAllTodos().length;
+  }
+
+  get numberOfcompletedTodos(): number{
     return this.todoStorageService.countOfCompleted;
+  }
+
+  toggleHideCompleted(): void {
+    this.hideCompleted = !this.hideCompleted;
   }
 
 }

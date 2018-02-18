@@ -77,4 +77,11 @@ export class TodoStorageService {
   }
 
 
+  // getUncompleted
+  getUncompletedTodos(): Todo[] {
+    return this.todos
+      .filter(todo => !todo.completed);
+  }
+
+
 }

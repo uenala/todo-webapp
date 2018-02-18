@@ -29,12 +29,12 @@
     <!-- config component-->
       <div class="float_center">
         <div class="child">
-          <p class="stats" *ngIf="completed > 0">{{ completed }} von {{todos.length}} Todo's sind erledigt</p>
-          <p class="stats" *ngIf="completed == todos.length">BRAVO! Alle Todo's geschafft!</p>
+          <p class="stats" *ngIf="numberOfcompletedTodos > 0">{{ numberOfcompletedTodos }} von {{numberOfTodos}} Todo's sind erledigt</p>
+          <p class="stats" *ngIf="numberOfcompletedTodos == numberOfTodos">BRAVO! Alle Todo's geschafft!</p>
+          <p class="stats" *ngIf="numberOfcompletedTodos > 0"><input type="checkbox" (click)="toggleHideCompleted()" [checked]="hideCompleted"><label>Erledigte ausblenden</label></p>
         </div>
       </div>
       <div class="clear"></div>
-
 
     <div class="clear"></div>
   </section>

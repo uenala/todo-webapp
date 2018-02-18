@@ -92,4 +92,20 @@ describe('TodoStorageService', () => {
 
   });
 
+
+
+  describe('#getUncompletedTodos()', () => {
+
+    it('should return an array holding the uncompleted todos', inject([TodoStorageService], (service: TodoStorageService) => {
+      let todo1 = new Todo({description: 'uncompleted 1', completed: false});
+      let todo2 = new Todo({description: 'completed', completed: true});
+      let todo3 = new Todo({description: 'uncompleted 2', completed: false});
+      service.addTodo(todo1);
+      service.addTodo(todo2);
+      service.addTodo(todo3);
+      expect(service.getUncompletedTodos()).toEqual([todo1, todo3]);
+    }));
+
+  });
+
 });
